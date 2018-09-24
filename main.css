@@ -15,16 +15,33 @@ body {
     padding: 0;
 }
 
-/* ** ---- COMPONENTS ---- ** *
- * ** -------------------- ** /
+.links {
+    text-decoration: none;
+    padding: 10px;
+    color: #777;
+    text-transform: capitalize;
+    font-size: 14px;
+}
 
+.container-adjusting {
+    width: 562px;
+    margin-left: 175px;
+}
 
+.default-link {
+    border-bottom: 4px solid;
+    padding: 10px 16px 13px 16px;
+    color: #1A73E8;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 /************** HEADER ***************
 *************************************/
 
 header {
-    background-color: rgba(0, 0, 0, 0.018);
+    background-color: rgba(250, 250, 250, 0.8);
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -50,7 +67,7 @@ header {
 
 .login-links a .avatar-icon {
     height: 38px;
-
+    vertical-align: bottom;
 }
 
 .logo img {
@@ -63,23 +80,31 @@ header {
 }
 
 .search-bar .logo {
-    padding: 0 20px;
+    padding: 5px 20px 0 20px;
+    height: 51px;
 }
 
 .search-bar input[type=search] {
     width: 560px;
     height: 50px;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.05), 0px 2.2px 5px -1.5px rgba(0,0,0,0.2);
 }
 
 /* ------ Main Links ------*/
 .main-links {
     display: flex;
+    padding-left: 0;
 }
 
 .main-links .left {
     display: flex;
+    padding-left: 0;
 }
 
 .main-links .right {
     display: flex;
 }
+
