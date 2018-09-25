@@ -14,22 +14,32 @@ body {
     font-size: 14px;
     color: #777;
     margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
     text-decoration: none;
 }
 
-.background {
+.background-one {
     background-color: rgba(250, 250, 250, 0.8);
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.background-two {
+    background-color: rgba(250, 250, 250, 0.8);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
 }
 
 .links {
     padding: 10px;
     color: #777;
     text-transform: capitalize;
+}
+
+.links:hover {
+    color: #222;
 }
 
 .container-adjusting {
@@ -56,9 +66,19 @@ a {
     text-align: right;
 }
 
+.login-links a {
+    padding-top: 15px;
+}
+
 .login-links a .menu-icon, 
 .login-links a .bell-icon {
     padding-right: 15px;
+    opacity: .7;
+}
+
+.login-links a .menu-icon:hover, 
+.login-links a .bell-icon:hover {
+    opacity: 1;
 }
 
 .login-links a .menu-icon {
@@ -89,20 +109,31 @@ a {
 }
 
 .search-bar input[type=search] {
-    position: relative;
+    /* position: relative; */
     min-width: 560px;
-    min-height: 50px;
+    min-height: 45px;
     border: none;
     border-radius: 2px;
     margin-bottom: 15px;
     box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.05), 0px 2.2px 5px -1.5px rgba(0,0,0,0.2);
 }
 
+.search-bar input[type=search]:hover {
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.05), 0px 3px 6px 0px rgba(0,0,0,0.12);
+}
+
 .search-bar-icons {
-    position: absolute;
+    /* position: absolute;
     top: 40px;
     left: 650px;
-    height: 40px;
+    height: 40px; */
+
+    position: relative;
+    display: inherit;
+    top: 10px;
+    right: 90px;
+    width: 74px;
+    height: 35px;
 }
 
 .search-bar-icons img {
@@ -111,6 +142,50 @@ a {
 
 .search-bar-icons .voice-icon img {
     margin-right: 10px;
+}
+
+.search-bar-icons .voice-icon {
+    margin-right: 10px;
+}
+
+/* ------ TOOLtip ------*/
+.search-bar-icons .voice-icon::before,
+.search-bar-icons .voice-icon::after {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transition: all ease 0.3s
+}
+
+.search-bar-icons .voice-icon::before {
+    content: "";
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #222 transparent;
+    left: 4px;
+    bottom: -7px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.search-bar-icons .voice-icon::after {
+    content: attr(data-tooltip);
+    background-color: #222;
+    left: -38px;
+    bottom: -35px;
+    padding: 10px;
+    font-size: 11.3px;
+    color: white;
+    font-weight: bold;
+    outline: 1px solid white;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Hover Style */
+.search-bar-icons .voice-icon:hover::before,
+.search-bar-icons .voice-icon:hover::after {
+    opacity: 1;
 }
 
 /* ------ Main Links ------*/
@@ -126,6 +201,18 @@ a {
 
 .main-links .right {
     display: flex;
+    margin-left: 35px;
+}
+
+.right li .box:hover {
+    border: 1px solid #c6c6c6;
+    background-color: #f8f8f8;
+    background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    outline: none;
+    outline-width: 0;
+    padding: 5px 15px;
+    color: #777;
 }
 
 /************** MAIN ***************
@@ -137,6 +224,10 @@ h1 {
     font-size: 18px;
     font-weight: normal;
     color: #1a0dab;
+}
+
+h1:hover {
+    text-decoration: underline;
 }
 
 .subheading-links {
@@ -183,6 +274,10 @@ strong {
     color: #1a0dab;
 }
 
+.group-links:hover {
+    text-decoration: underline;
+}
+
 .group-links,
 .group-spans {
     line-height: 1.4;
@@ -207,6 +302,10 @@ h2 {
     color: #1a0dab;
 }
 
+.secondary-links:hover {
+    text-decoration: underline;
+}
+
 .secondary-content .left {
     padding-left: 0;
 }
@@ -217,13 +316,32 @@ h2 {
     margin-bottom: 50px;
 }
 
-.page-selection table {
-    width: 339px;
+.page-selection::before {
+    content: "";
+    position: absolute;
+    left: 280px;
+    top: 1600px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
 }
 
+.page-selection table {
+    width: 339px;
+    margin: 0 auto;
+}
 
 /* ------ GOOGLE TABLE ------
 -----------------------------*/
+.google-img td {
+    background-image: url(https://www.google.com/images/nav_logo242.png);
+    background-color: white;
+    width: 95px;
+    height: 40px;
+    background-repeat: no-repeat;
+}
+
 .google-img td {
     background-image: url(https://www.google.com/images/nav_logo242.png);
     background-color: white;
@@ -238,58 +356,59 @@ h2 {
 
 .google-img td:nth-of-type(2) {
     position: absolute;
-    left: 177px;
+    left: 290px;
     z-index: -1;
 }
 
 .google-img td:nth-of-type(3) {
     position: absolute;
-    left: 199px;
+    left: 310px;
     z-index: -2;
 }
 
 .google-img td:nth-of-type(4) {
     position: absolute;
-    left: 220px;
+    left: 332px;
     z-index: -3;
 }
 
 .google-img td:nth-of-type(5) {
     position: absolute;
-    left: 240px;
+    left: 354px;
     z-index: -4;
 }
 
 .google-img td:nth-of-type(6) {
     position: absolute;
-    left: 262px;
+    left: 376px;
     z-index: -5;
 }
 
 .google-img td:nth-of-type(7) {
     position: absolute;
-    left: 284px;
+    left: 398px;
     z-index: -6;
 }
 
 .google-img td:nth-of-type(8) {
     position: absolute;
-    left: 306px;
+    left: 420px;
     z-index: -7;
 }
 
 .google-img td:nth-of-type(9) {
     position: absolute;
-    left: 329px;
+    left: 442px;
     z-index: -8;
 }
 
 .google-img td:nth-of-type(10) {
     position: absolute;
-    left: 351px;
+    left: 464px;
     z-index: -9;
     width: 170px;
 }
+
 
 /* ------ PAGE COUNT TABLE ------
 -----------------------------*/
@@ -303,7 +422,61 @@ h2 {
     color: #4285f4;
 }
 
+.page-count td a:hover {
+    text-decoration: underline;
+}
+
 .page-count td:nth-of-type(10) {
     text-align: -webkit-auto;
     padding-right: 15px;
 }
+
+/************** FOOTER ***************
+*************************************/
+.foot-links {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.foot-links ul {
+    padding-left: 0;
+}
+
+.foot-links ul li {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+footer p {
+    position: relative;
+    margin-left: 175px;
+    width: auto;
+}
+
+footer p .city {
+    font-size: 16px;
+    padding: 3px 15px 3px 0;
+    margin-right: 1px;
+    color: rgb(51, 51, 51);
+    border-right: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+footer p .location {
+    margin-left: 30px;
+}
+
+footer p .location::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 145px;
+    display: block;
+    background-color: #777c;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+footer p a {
+    color: #333;
+}
+
